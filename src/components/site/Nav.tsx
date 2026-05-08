@@ -53,7 +53,7 @@ export const Nav = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="tel:8010750750" className="hidden sm:inline-flex">
+          <a href="tel:9811794750" className="hidden sm:inline-flex">
             <Button variant="luxe" size="sm">
               <Phone className="w-4 h-4 mr-2" /> Call Now
             </Button>

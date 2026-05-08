@@ -59,7 +59,7 @@ const Hero = () => (
         </p>
         <div className="flex flex-wrap gap-4 mb-14">
           <a href="#contact"><Button variant="gold" size="lg">Request Project Details <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
-          <a href={`tel:${PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
+          <a href={`tel:${CALL_PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ivory/10 border border-ivory/15 backdrop-blur-sm">
@@ -323,7 +323,8 @@ const Contact = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Project Desk</div>
-                <a href={`tel:${PHONE}`} className="font-display text-xl text-primary hover:text-accent">{PHONE_DISPLAY}</a>
+                <a href={`tel:${CALL_PHONE}`} className="font-display text-xl text-primary hover:text-accent block">{CALL_PHONE_DISPLAY}</a>
+                <a href={`tel:${PHONE}`} className="text-sm text-muted-foreground hover:text-accent block mt-1">{PHONE_DISPLAY}</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -434,7 +435,7 @@ const FloatingCTA = () => (
       <MessageCircle className="w-6 h-6" />
     </a>
     <a
-      href={`tel:${PHONE}`}
+      href={`tel:${CALL_PHONE}`}
       className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-emerald text-primary-foreground flex items-center justify-center shadow-luxe hover:scale-105 transition-transform sm:hidden"
       aria-label="Call"
     >
