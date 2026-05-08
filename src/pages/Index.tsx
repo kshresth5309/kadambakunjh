@@ -11,12 +11,15 @@ import {
   Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero-aerial.jpg";
-import boulevardImg from "@/assets/gallery-boulevard.jpg";
-import internalRoadImg from "@/assets/gallery-internal-road.jpg";
-import commercialImg from "@/assets/gallery-commercial.jpg";
+import aerialMasterImg from "@/assets/gallery-aerial.png";
+import internalRoadImg from "@/assets/gallery-internal-road.png";
+import commercialImg from "@/assets/gallery-commercial.png";
+import roadSectionImg from "@/assets/road-section.png";
 import masterPlanImg from "@/assets/master-plan.jpg";
 import logo from "@/assets/logo.png";
 
+const CALL_PHONE = "9811794750";
+const CALL_PHONE_DISPLAY = "+91 98117 94750";
 const PHONE = "8010750750";
 const PHONE_DISPLAY = "+91 80 10 750 750";
 
