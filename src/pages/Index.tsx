@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { Nav } from "@/components/site/Nav";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -312,19 +313,28 @@ const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [type, setType] = useState("");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    const stored = JSON.parse(localStorage.getItem("kk_leads") || "[]");
-    stored.push({ ...data, buyerType: type, ts: new Date().toISOString() });
-    localStorage.setItem("kk_leads", JSON.stringify(stored));
-    setTimeout(() => {
-      toast.success("Enquiry received. Our project team will reach out shortly.");
-      (e.target as HTMLFormElement).reset();
-      setType("");
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const { error } = await supabase.from("leads").insert({
+      name: data.name,
+      company: data.company || null,
+      phone: data.phone,
+      email: data.email,
+      buyer_type: type || null,
+      message: data.message || null,
+    });
+    if (error) {
+      toast.error("Could not submit. Please call us directly.");
       setSubmitting(false);
-    }, 600);
+      return;
+    }
+    toast.success("Enquiry received. Our project team will reach out shortly.");
+    form.reset();
+    setType("");
+    setSubmitting(false);
   };
 
   return (
