@@ -373,11 +373,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <a
-            href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh builder inventory.")}`}
-            target="_blank" rel="noreferrer"
-          >
-            <Button variant="luxe" size="lg"><MessageCircle className="w-4 h-4 mr-2" /> WhatsApp Project Team</Button>
+          <a href={`tel:${CALL_PHONE}`}>
+            <Button variant="luxe" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Project Team</Button>
           </a>
         </div>
 
