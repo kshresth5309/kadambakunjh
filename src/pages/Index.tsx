@@ -243,10 +243,10 @@ const WhyBuilders = () => {
 
 const Gallery = () => {
   const items = [
-    { src: heroImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
+    { src: aerialMasterImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
     { src: internalRoadImg, caption: "12 m Wide Road View — Artistic Impression" },
     { src: commercialImg, caption: "Commercial Plot & Kiosks — Artistic Impression" },
-    { src: boulevardImg, caption: "Boulevard Inspiration" },
+    { src: roadSectionImg, caption: "12 m Wide Road Section" },
     { src: masterPlanImg, caption: "Site Layout Reference" },
   ];
   return (
