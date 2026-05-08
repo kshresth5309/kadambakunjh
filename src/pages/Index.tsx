@@ -11,12 +11,15 @@ import {
   Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero-aerial.jpg";
-import boulevardImg from "@/assets/gallery-boulevard.jpg";
-import internalRoadImg from "@/assets/gallery-internal-road.jpg";
-import commercialImg from "@/assets/gallery-commercial.jpg";
+import aerialMasterImg from "@/assets/gallery-aerial.png";
+import internalRoadImg from "@/assets/gallery-internal-road.png";
+import commercialImg from "@/assets/gallery-commercial.png";
+import roadSectionImg from "@/assets/road-section.png";
 import masterPlanImg from "@/assets/master-plan.jpg";
 import logo from "@/assets/logo.png";
 
+const CALL_PHONE = "9811794750";
+const CALL_PHONE_DISPLAY = "+91 98117 94750";
 const PHONE = "8010750750";
 const PHONE_DISPLAY = "+91 80 10 750 750";
 
@@ -56,7 +59,7 @@ const Hero = () => (
         </p>
         <div className="flex flex-wrap gap-4 mb-14">
           <a href="#contact"><Button variant="gold" size="lg">Request Project Details <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
-          <a href={`tel:${PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
+          <a href={`tel:${CALL_PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ivory/10 border border-ivory/15 backdrop-blur-sm">
@@ -240,10 +243,10 @@ const WhyBuilders = () => {
 
 const Gallery = () => {
   const items = [
-    { src: heroImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
+    { src: aerialMasterImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
     { src: internalRoadImg, caption: "12 m Wide Road View — Artistic Impression" },
     { src: commercialImg, caption: "Commercial Plot & Kiosks — Artistic Impression" },
-    { src: boulevardImg, caption: "Boulevard Inspiration" },
+    { src: roadSectionImg, caption: "12 m Wide Road Section" },
     { src: masterPlanImg, caption: "Site Layout Reference" },
   ];
   return (
@@ -320,7 +323,8 @@ const Contact = () => {
               </div>
               <div>
                 <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Project Desk</div>
-                <a href={`tel:${PHONE}`} className="font-display text-xl text-primary hover:text-accent">{PHONE_DISPLAY}</a>
+                <a href={`tel:${CALL_PHONE}`} className="font-display text-xl text-primary hover:text-accent block">{CALL_PHONE_DISPLAY}</a>
+                <a href={`tel:${PHONE}`} className="text-sm text-muted-foreground hover:text-accent block mt-1">{PHONE_DISPLAY}</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -431,7 +435,7 @@ const FloatingCTA = () => (
       <MessageCircle className="w-6 h-6" />
     </a>
     <a
-      href={`tel:${PHONE}`}
+      href={`tel:${CALL_PHONE}`}
       className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-emerald text-primary-foreground flex items-center justify-center shadow-luxe hover:scale-105 transition-transform sm:hidden"
       aria-label="Call"
     >
