@@ -159,9 +159,6 @@ const MasterPlan = () => (
             </li>
           ))}
         </ul>
-        <p className="text-sm italic text-muted-foreground border-l-2 border-accent pl-4">
-          Reference: layout plan visual from project presentation (page 5).
-        </p>
       </div>
       <div className="luxe-card overflow-hidden">
         <img src={masterPlanImg} alt="Kadamba Kunjh master layout plan" className="w-full h-auto" loading="lazy" width={1408} height={1024} />
