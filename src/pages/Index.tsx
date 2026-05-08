@@ -1,16 +1,461 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Nav } from "@/components/site/Nav";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { toast } from "sonner";
+import {
+  Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store,
+  Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
+} from "lucide-react";
+import heroImg from "@/assets/hero-aerial.jpg";
+import boulevardImg from "@/assets/gallery-boulevard.jpg";
+import internalRoadImg from "@/assets/gallery-internal-road.jpg";
+import commercialImg from "@/assets/gallery-commercial.jpg";
+import masterPlanImg from "@/assets/master-plan.jpg";
+import logo from "@/assets/logo.png";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
-  return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+const PHONE = "8010750750";
+const PHONE_DISPLAY = "+91 80 10 750 750";
+
+const Eyebrow = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex items-center gap-3 mb-5">
+    <span className="hairline" />
+    <span className="eyebrow">{children}</span>
+  </div>
+);
+
+const Section = ({ id, className = "", children }: { id?: string; className?: string; children: React.ReactNode }) => (
+  <section id={id} className={`py-24 md:py-32 ${className}`}>
+    <div className="container-luxe">{children}</div>
+  </section>
+);
+
+const Hero = () => (
+  <section id="top" className="relative min-h-screen flex items-end overflow-hidden">
+    <div className="absolute inset-0 animate-ken-burns">
+      <img src={heroImg} alt="Kadamba Kunjh aerial artistic impression" className="w-full h-full object-cover" width={1920} height={1080} />
     </div>
+    <div className="absolute inset-0 bg-gradient-hero" />
+    <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
+
+    <div className="container-luxe relative pb-20 md:pb-28 pt-40">
+      <div className="max-w-4xl animate-fade-up">
+        <Eyebrow>Exclusive Sales Mandate · Kumar Linkers Realty</Eyebrow>
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-ivory leading-[1.05] mb-6">
+          Kadamba Kunjh
+          <span className="block text-2xl md:text-3xl lg:text-4xl text-accent-soft mt-4 font-light italic">
+            A Premium Plotted Development Opportunity in Koyal Enclave, Ghaziabad
+          </span>
+        </h1>
+        <p className="text-ivory/85 text-base md:text-lg max-w-2xl mb-10 leading-relaxed">
+          Exclusively for <span className="text-accent">Basement + Stilt + 4</span> multi-unit floor builders. A rare,
+          organized plotted estate in an established residential catchment.
+        </p>
+        <div className="flex flex-wrap gap-4 mb-14">
+          <a href="#contact"><Button variant="gold" size="lg">Request Project Details <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
+          <a href={`tel:${PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ivory/10 border border-ivory/15 backdrop-blur-sm">
+          {[
+            { v: "24,143", l: "sqm Development" },
+            { v: "45 m", l: "Wide Road Frontage" },
+            { v: "12 m", l: "Internal Roads" },
+            { v: "Prime", l: "Residential Catchment" },
+          ].map((s) => (
+            <div key={s.l} className="bg-primary/40 backdrop-blur-md p-5 md:p-6">
+              <div className="font-display text-2xl md:text-3xl text-accent">{s.v}</div>
+              <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-ivory/70 mt-1">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const EligibilityCallout = () => (
+  <Section className="bg-ivory">
+    <div className="luxe-card p-10 md:p-16 bg-gradient-emerald text-primary-foreground relative overflow-hidden">
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
+      <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="h-px w-12 bg-accent/80" />
+            <span className="text-xs uppercase tracking-[0.3em] text-accent">Eligibility</span>
+          </div>
+          <h2 className="font-display text-3xl md:text-5xl mb-6 leading-tight">
+            For B+S+4 Multi-Unit <span className="italic text-accent-soft">Floor Builders</span> Only
+          </h2>
+          <p className="text-ivory/85 max-w-2xl text-base md:text-lg leading-relaxed">
+            Kadamba Kunjh is positioned for experienced builders and developers looking to create premium low-rise
+            builder-floor inventory in a high-connectivity Ghaziabad micro-market. This is not an individual plot
+            retail offering.
+          </p>
+        </div>
+        <a href="#contact" className="shrink-0">
+          <Button variant="gold" size="lg">Check Builder Inventory</Button>
+        </a>
+      </div>
+    </div>
+  </Section>
+);
+
+const Location = () => {
+  const stats = [
+    { icon: Plane, time: "5 min", place: "Hindon International Airport" },
+    { icon: ShoppingBag, time: "2 min", place: "Oxy Rich Mall" },
+    { icon: Stethoscope, time: "4 min", place: "Yashoda Hospital" },
+    { icon: Store, time: "7 min", place: "DMart" },
+  ];
+  return (
+    <Section id="location" className="bg-background">
+      <div className="max-w-3xl mb-16">
+        <Eyebrow>Location Advantage</Eyebrow>
+        <h2 className="font-display text-4xl md:text-5xl text-primary mb-5">A Location Built for Fast Decision-Making</h2>
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          Located in Koyal Enclave, Ghaziabad, within an established residential neighborhood with social
+          infrastructure already in place.
+        </p>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((s) => (
+          <div key={s.place} className="luxe-card p-8 group">
+            <s.icon className="w-7 h-7 text-accent mb-6" strokeWidth={1.2} />
+            <div className="font-display text-4xl text-primary mb-2">{s.time}</div>
+            <div className="text-sm text-muted-foreground leading-snug">from {s.place}</div>
+            <div className="h-px w-8 bg-accent/60 mt-6 group-hover:w-16 transition-all duration-500" />
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 };
 
-const Index = PlaceholderIndex;
+const MasterPlan = () => (
+  <Section id="masterplan" className="bg-ivory-deep/40">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <Eyebrow>Master Plan · Scale</Eyebrow>
+        <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
+          Designed for movement, visibility, livability, and <em className="text-accent">builder-floor viability</em>.
+        </h2>
+        <ul className="space-y-4 mb-8">
+          {[
+            "Approx. 24,143.46 sqm site area",
+            "45 m wide arterial road frontage",
+            "12 m internal roads with hierarchy",
+            "Residential plots, commercial plots & kiosks",
+          ].map((t) => (
+            <li key={t} className="flex gap-3 text-foreground/85">
+              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" strokeWidth={1.5} />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-sm italic text-muted-foreground border-l-2 border-accent pl-4">
+          Reference: layout plan visual from project presentation (page 5).
+        </p>
+      </div>
+      <div className="luxe-card overflow-hidden">
+        <img src={masterPlanImg} alt="Kadamba Kunjh master layout plan" className="w-full h-auto" loading="lazy" width={1408} height={1024} />
+      </div>
+    </div>
+  </Section>
+);
+
+const Infrastructure = () => {
+  const items = [
+    { icon: Trees, title: "Grand Tree-Lined Boulevards" },
+    { icon: Footprints, title: "Walkable, Wellness-Oriented Streets" },
+    { icon: Bike, title: "Cycling-Friendly Internal Roads" },
+    { icon: Lightbulb, title: "Smart, Well-Lit Infrastructure" },
+    { icon: DoorOpen, title: "Distinctive Entrance & Identity" },
+    { icon: Building2, title: "Vibrant Commercial Frontage" },
+    { icon: Droplets, title: "Eco-Sensitive Drainage & Design" },
+    { icon: Route, title: "Organized Road Hierarchy" },
+  ];
+  return (
+    <Section className="bg-background">
+      <div className="max-w-3xl mb-16">
+        <Eyebrow>Infrastructure & Lifestyle</Eyebrow>
+        <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
+          A community designed around <em className="text-accent">thoughtful infrastructure</em>.
+        </h2>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+        {items.map((it) => (
+          <div key={it.title} className="bg-card p-8 hover:bg-ivory-deep/50 transition-colors duration-500 group">
+            <it.icon className="w-8 h-8 text-accent mb-6" strokeWidth={1.2} />
+            <div className="font-display text-xl text-primary leading-snug">{it.title}</div>
+            <div className="h-px w-6 bg-accent/50 mt-5 group-hover:w-12 transition-all duration-500" />
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+};
+
+const WhyBuilders = () => {
+  const points = [
+    "Scarcity of organized low-rise plotted land in Ghaziabad.",
+    "Established residential catchment supports end-user demand.",
+    "Connectivity to airport, hospital, mall, retail, and daily conveniences.",
+    "Planned 12 m internal roads and 45 m frontage improve project perception and access.",
+    "Commercial frontage and kiosks add liveliness to the development.",
+    "Premium community design helps builders command stronger resale positioning.",
+  ];
+  return (
+    <Section id="opportunity" className="bg-primary text-primary-foreground relative overflow-hidden">
+      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary-glow/30 blur-3xl" />
+      <div className="relative grid lg:grid-cols-[1fr_2fr] gap-16">
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="h-px w-12 bg-accent/80" />
+            <span className="text-xs uppercase tracking-[0.3em] text-accent">The Opportunity</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl mb-6 leading-tight">
+            Why Builders Should Look at <em className="text-accent-soft">Kadamba Kunjh</em>
+          </h2>
+          <p className="text-ivory/70 leading-relaxed">
+            A boutique plotted estate meets institutional real estate opportunity — engineered for builder-floor economics.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
+          {points.map((p, i) => (
+            <div key={i} className="border-t border-ivory/20 pt-6">
+              <div className="font-display text-3xl text-accent mb-3">{String(i + 1).padStart(2, "0")}</div>
+              <p className="text-ivory/85 leading-relaxed">{p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+};
+
+const Gallery = () => {
+  const items = [
+    { src: heroImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
+    { src: internalRoadImg, caption: "12 m Wide Road View — Artistic Impression" },
+    { src: commercialImg, caption: "Commercial Plot & Kiosks — Artistic Impression" },
+    { src: boulevardImg, caption: "Boulevard Inspiration" },
+    { src: masterPlanImg, caption: "Site Layout Reference" },
+  ];
+  return (
+    <Section id="gallery" className="bg-ivory-deep/40">
+      <div className="max-w-3xl mb-16">
+        <Eyebrow>Gallery</Eyebrow>
+        <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
+          A glimpse of the <em className="text-accent">vision</em>.
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[200px] gap-4">
+        {items.map((it, i) => (
+          <figure key={i} className={`relative overflow-hidden group luxe-card ${it.span ?? ""}`}>
+            <img
+              src={it.src}
+              alt={it.caption}
+              loading="lazy"
+              className="w-full h-full object-cover min-h-[260px] md:min-h-0 transition-transform duration-700 group-hover:scale-105"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent p-5 text-ivory text-xs uppercase tracking-[0.2em]">
+              {it.caption}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Section>
+  );
+};
+
+const Contact = () => {
+  const [submitting, setSubmitting] = useState(false);
+  const [type, setType] = useState("");
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+    const stored = JSON.parse(localStorage.getItem("kk_leads") || "[]");
+    stored.push({ ...data, buyerType: type, ts: new Date().toISOString() });
+    localStorage.setItem("kk_leads", JSON.stringify(stored));
+    setTimeout(() => {
+      toast.success("Enquiry received. Our project team will reach out shortly.");
+      (e.target as HTMLFormElement).reset();
+      setType("");
+      setSubmitting(false);
+    }, 600);
+  };
+
+  return (
+    <Section id="contact" className="bg-background">
+      <div className="grid lg:grid-cols-2 gap-16">
+        <div>
+          <Eyebrow>Contact</Eyebrow>
+          <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
+            Request Builder <em className="text-accent">Inventory Details</em>
+          </h2>
+          <p className="text-muted-foreground mb-10 leading-relaxed">
+            Share your enquiry and a project advisor will respond with the curated inventory note, layout, and commercial terms.
+          </p>
+
+          <div className="space-y-6 mb-10">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                <Building2 className="w-5 h-5 text-accent" strokeWidth={1.3} />
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Mandate</div>
+                <div className="font-display text-xl text-primary">Kumar Linkers Realty</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                <Phone className="w-5 h-5 text-accent" strokeWidth={1.3} />
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Project Desk</div>
+                <a href={`tel:${PHONE}`} className="font-display text-xl text-primary hover:text-accent">{PHONE_DISPLAY}</a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                <MapPin className="w-5 h-5 text-accent" strokeWidth={1.3} />
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Web</div>
+                <a href="https://kumarlinkers.in" className="font-display text-xl text-primary hover:text-accent">kumarlinkers.in</a>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh builder inventory.")}`}
+            target="_blank" rel="noreferrer"
+          >
+            <Button variant="luxe" size="lg"><MessageCircle className="w-4 h-4 mr-2" /> WhatsApp Project Team</Button>
+          </a>
+        </div>
+
+        <form onSubmit={onSubmit} className="luxe-card p-8 md:p-10 bg-card space-y-5">
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div>
+              <Label htmlFor="name" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Name</Label>
+              <Input id="name" name="name" required className="mt-2 border-border bg-background" />
+            </div>
+            <div>
+              <Label htmlFor="company" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Company</Label>
+              <Input id="company" name="company" className="mt-2 border-border bg-background" />
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div>
+              <Label htmlFor="phone" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Phone</Label>
+              <Input id="phone" name="phone" type="tel" required className="mt-2 border-border bg-background" />
+            </div>
+            <div>
+              <Label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email</Label>
+              <Input id="email" name="email" type="email" required className="mt-2 border-border bg-background" />
+            </div>
+          </div>
+          <div>
+            <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Buyer Type</Label>
+            <Select value={type} onValueChange={setType}>
+              <SelectTrigger className="mt-2 bg-background"><SelectValue placeholder="Select category" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="builder">Builder</SelectItem>
+                <SelectItem value="developer">Developer</SelectItem>
+                <SelectItem value="broker">Broker</SelectItem>
+                <SelectItem value="investor">Investor</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Message</Label>
+            <Textarea id="message" name="message" rows={4} className="mt-2 border-border bg-background" />
+          </div>
+          <Button type="submit" variant="luxe" size="lg" className="w-full" disabled={submitting}>
+            {submitting ? "Submitting…" : "Submit Enquiry"}
+          </Button>
+          <p className="text-[11px] text-muted-foreground leading-relaxed pt-2">
+            Availability, pricing, approvals, payment plans, and final terms are subject to confirmation. Images shown
+            are artistic impressions / project presentation visuals.
+          </p>
+        </form>
+      </div>
+    </Section>
+  );
+};
+
+const Footer = () => (
+  <footer className="bg-primary text-primary-foreground py-16">
+    <div className="container-luxe">
+      <div className="grid md:grid-cols-2 gap-10 mb-10">
+        <div className="flex items-start gap-4">
+          <img src={logo} alt="Kadamba Kunjh" className="h-14 w-14 object-contain" width={56} height={56} />
+          <div>
+            <div className="font-display text-2xl mb-2">Kadamba Kunjh</div>
+            <p className="text-ivory/70 text-sm max-w-md italic">A community designed around thoughtful infrastructure.</p>
+          </div>
+        </div>
+        <nav className="flex flex-wrap gap-x-8 gap-y-3 md:justify-end items-start">
+          {["Location", "Master Plan", "Builder Opportunity", "Gallery", "Contact"].map((l) => (
+            <a key={l} href={`#${l.toLowerCase().replace(/ /g, "")}`} className="text-xs uppercase tracking-[0.2em] text-ivory/80 hover:text-accent">
+              {l}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-4 justify-between text-xs text-ivory/60">
+        <div>© {new Date().getFullYear()} Kumar Linkers Realty · Exclusive Sales Mandate</div>
+        <div>Koyal Enclave, Ghaziabad, Uttar Pradesh</div>
+      </div>
+    </div>
+  </footer>
+);
+
+const FloatingCTA = () => (
+  <>
+    <a
+      href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh.")}`}
+      target="_blank" rel="noreferrer"
+      className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-luxe hover:scale-105 transition-transform"
+      aria-label="WhatsApp"
+    >
+      <MessageCircle className="w-6 h-6" />
+    </a>
+    <a
+      href={`tel:${PHONE}`}
+      className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-emerald text-primary-foreground flex items-center justify-center shadow-luxe hover:scale-105 transition-transform sm:hidden"
+      aria-label="Call"
+    >
+      <Phone className="w-6 h-6" />
+    </a>
+  </>
+);
+
+const Index = () => {
+  return (
+    <main className="bg-background min-h-screen">
+      <Nav />
+      <Hero />
+      <EligibilityCallout />
+      <Location />
+      <MasterPlan />
+      <Infrastructure />
+      <WhyBuilders />
+      <Gallery />
+      <Contact />
+      <Footer />
+      <FloatingCTA />
+    </main>
+  );
+};
 
 export default Index;
