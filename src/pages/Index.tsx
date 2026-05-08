@@ -457,23 +457,14 @@ const Footer = () => (
 );
 
 const FloatingCTA = () => (
-  <>
-    <a
-      href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh.")}`}
-      target="_blank" rel="noreferrer"
-      className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-luxe hover:scale-105 transition-transform"
-      aria-label="WhatsApp"
-    >
-      <MessageCircle className="w-6 h-6" />
-    </a>
-    <a
-      href={`tel:${CALL_PHONE}`}
-      className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-emerald text-primary-foreground flex items-center justify-center shadow-luxe hover:scale-105 transition-transform sm:hidden"
-      aria-label="Call"
-    >
-      <Phone className="w-6 h-6" />
-    </a>
-  </>
+  <a
+    href={`tel:${CALL_PHONE}`}
+    className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-5 h-14 rounded-full bg-gradient-emerald text-primary-foreground shadow-luxe hover:scale-105 transition-transform"
+    aria-label="Call Now"
+  >
+    <Phone className="w-5 h-5" />
+    <span className="font-display text-sm tracking-wide">Call Now</span>
+  </a>
 );
 
 const Index = () => {
