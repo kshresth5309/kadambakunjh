@@ -242,12 +242,9 @@ const WhyBuilders = () => {
 };
 
 const Gallery = () => {
-  const items = [
-    { src: aerialMasterImg, caption: "Aerial Master View — Artistic Impression", span: "md:col-span-2 md:row-span-2" },
-    { src: internalRoadImg, caption: "12 m Wide Road View — Artistic Impression" },
-    { src: commercialImg, caption: "Commercial Plot & Kiosks — Artistic Impression" },
-    { src: roadSectionImg, caption: "12 m Wide Road Section" },
-    { src: masterPlanImg, caption: "Site Layout Reference" },
+  const tiles = [
+    { src: internalRoadImg, eyebrow: "Streetscape", caption: "12 m Wide Road View" },
+    { src: commercialImg, eyebrow: "Retail Frontage", caption: "Commercial Plot & Kiosks" },
   ];
   return (
     <Section id="gallery" className="bg-ivory-deep/40">
@@ -256,22 +253,60 @@ const Gallery = () => {
         <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
           A glimpse of the <em className="text-accent">vision</em>.
         </h2>
+        <p className="text-muted-foreground mt-5 text-sm italic">All visuals are artistic impressions for representation only.</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[200px] gap-4">
-        {items.map((it, i) => (
-          <figure key={i} className={`relative overflow-hidden group luxe-card ${it.span ?? ""}`}>
+
+      {/* Hero aerial */}
+      <figure className="relative overflow-hidden luxe-card group mb-4">
+        <img
+          src={aerialMasterImg}
+          alt="Kadamba Kunjh aerial master view artistic impression"
+          loading="lazy"
+          className="w-full h-[420px] md:h-[620px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+        />
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-6 md:p-8">
+          <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-2">Aerial Master View</div>
+          <div className="font-display text-ivory text-xl md:text-2xl">Residential & Commercial Plots, 12 m Roads, Kiosks</div>
+        </figcaption>
+      </figure>
+
+      {/* Two streetscape tiles */}
+      <div className="grid md:grid-cols-2 gap-4 mb-4">
+        {tiles.map((t) => (
+          <figure key={t.caption} className="relative overflow-hidden luxe-card group">
             <img
-              src={it.src}
-              alt={it.caption}
+              src={t.src}
+              alt={t.caption}
               loading="lazy"
-              className="w-full h-full object-cover min-h-[260px] md:min-h-0 transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-[280px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent p-5 text-ivory text-xs uppercase tracking-[0.2em]">
-              {it.caption}
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/55 to-transparent p-5">
+              <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-1.5">{t.eyebrow}</div>
+              <div className="font-display text-ivory text-lg md:text-xl">{t.caption}</div>
             </figcaption>
           </figure>
         ))}
       </div>
+
+      {/* Road section diagram — object-contain to preserve technical drawing */}
+      <figure className="luxe-card overflow-hidden bg-ivory">
+        <div className="grid md:grid-cols-[1fr_1.4fr]">
+          <div className="p-8 md:p-10 bg-gradient-emerald text-primary-foreground flex flex-col justify-center">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-3">Road Engineering</div>
+            <div className="font-display text-2xl md:text-3xl mb-4 leading-tight">12 m Wide Road Section</div>
+            <p className="text-ivory/80 text-sm leading-relaxed">
+              1.5 m sidewalk · 1 m bike lane · 3 m drive lane (each side), with integrated sewage and rain water drainage —
+              engineered for walkability, cycling, and orderly traffic flow.
+            </p>
+          </div>
+          <img
+            src={roadSectionImg}
+            alt="12 m wide road section diagram"
+            loading="lazy"
+            className="w-full h-full object-contain bg-ivory p-4"
+          />
+        </div>
+      </figure>
     </Section>
   );
 };
@@ -338,11 +373,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <a
-            href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh builder inventory.")}`}
-            target="_blank" rel="noreferrer"
-          >
-            <Button variant="luxe" size="lg"><MessageCircle className="w-4 h-4 mr-2" /> WhatsApp Project Team</Button>
+          <a href={`tel:${CALL_PHONE}`}>
+            <Button variant="luxe" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Project Team</Button>
           </a>
         </div>
 
@@ -425,23 +457,14 @@ const Footer = () => (
 );
 
 const FloatingCTA = () => (
-  <>
-    <a
-      href={`https://wa.me/91${PHONE}?text=${encodeURIComponent("Hi, I'd like details on Kadamba Kunjh.")}`}
-      target="_blank" rel="noreferrer"
-      className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-luxe hover:scale-105 transition-transform"
-      aria-label="WhatsApp"
-    >
-      <MessageCircle className="w-6 h-6" />
-    </a>
-    <a
-      href={`tel:${CALL_PHONE}`}
-      className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-emerald text-primary-foreground flex items-center justify-center shadow-luxe hover:scale-105 transition-transform sm:hidden"
-      aria-label="Call"
-    >
-      <Phone className="w-6 h-6" />
-    </a>
-  </>
+  <a
+    href={`tel:${CALL_PHONE}`}
+    className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-5 h-14 rounded-full bg-gradient-emerald text-primary-foreground shadow-luxe hover:scale-105 transition-transform"
+    aria-label="Call Now"
+  >
+    <Phone className="w-5 h-5" />
+    <span className="font-display text-sm tracking-wide">Call Now</span>
+  </a>
 );
 
 const Index = () => {
