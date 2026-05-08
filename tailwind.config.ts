@@ -68,6 +68,19 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        display: ['"Cormorant Garamond"', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-gold': 'var(--gradient-gold)',
+        'gradient-emerald': 'var(--gradient-emerald)',
+      },
+      boxShadow: {
+        luxe: 'var(--shadow-luxe)',
+        card: 'var(--shadow-card)',
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -91,6 +104,14 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-  },
+        },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "ken-burns": {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.08)" },
+        },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
