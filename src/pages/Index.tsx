@@ -476,22 +476,24 @@ const Contact = () => {
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground py-16">
     <div className="container-luxe">
-      <div className="grid md:grid-cols-2 gap-10 mb-10">
-        <div className="flex items-start gap-4">
-          <img src={logo} alt="Kadamba Kunjh" className="h-14 w-14 object-contain" width={56} height={56} />
-          <div>
-            <div className="font-display text-2xl mb-2">Kadamba Kunjh</div>
-            <p className="text-ivory/70 text-sm max-w-md italic">A community designed around thoughtful infrastructure.</p>
+      <Reveal>
+        <div className="grid md:grid-cols-2 gap-10 mb-10">
+          <div className="flex items-start gap-4">
+            <img src={logo} alt="Kadamba Kunjh" className="h-14 w-14 object-contain" width={56} height={56} />
+            <div>
+              <div className="font-display text-2xl mb-2">Kadamba Kunjh</div>
+              <p className="text-ivory/70 text-sm max-w-md italic">A community designed around thoughtful infrastructure.</p>
+            </div>
           </div>
+          <nav className="flex flex-wrap gap-x-8 gap-y-3 md:justify-end items-start">
+            {["Location", "Master Plan", "Builder Opportunity", "Gallery", "Contact"].map((l) => (
+              <a key={l} href={`#${l.toLowerCase().replace(/ /g, "")}`} className="text-xs uppercase tracking-[0.2em] text-ivory/80 hover:text-accent">
+                {l}
+              </a>
+            ))}
+          </nav>
         </div>
-        <nav className="flex flex-wrap gap-x-8 gap-y-3 md:justify-end items-start">
-          {["Location", "Master Plan", "Builder Opportunity", "Gallery", "Contact"].map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(/ /g, "")}`} className="text-xs uppercase tracking-[0.2em] text-ivory/80 hover:text-accent">
-              {l}
-            </a>
-          ))}
-        </nav>
-      </div>
+      </Reveal>
       <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-4 justify-between text-xs text-ivory/60">
         <div>© {new Date().getFullYear()} Kumar Linkers Realty · Exclusive Sales Mandate</div>
         <div>Koyal Enclave, Ghaziabad, Uttar Pradesh</div>
