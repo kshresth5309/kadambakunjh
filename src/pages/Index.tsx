@@ -273,65 +273,73 @@ const Gallery = () => {
   ];
   return (
     <Section id="gallery" className="bg-ivory-deep/40">
-      <div className="max-w-3xl mb-16">
-        <Eyebrow>Gallery</Eyebrow>
-        <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
-          A glimpse of the <em className="text-accent">vision</em>.
-        </h2>
-        <p className="text-muted-foreground mt-5 text-sm italic">All visuals are artistic impressions for representation only.</p>
-      </div>
+      <Reveal>
+        <div className="max-w-3xl mb-16">
+          <Eyebrow>Gallery</Eyebrow>
+          <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
+            A glimpse of the <em className="text-accent">vision</em>.
+          </h2>
+          <p className="text-muted-foreground mt-5 text-sm italic">All visuals are artistic impressions for representation only.</p>
+        </div>
+      </Reveal>
 
       {/* Hero aerial */}
-      <figure className="relative overflow-hidden luxe-card group mb-4">
-        <img
-          src={aerialMasterImg}
-          alt="Kadamba Kunjh aerial master view artistic impression"
-          loading="lazy"
-          className="w-full h-[420px] md:h-[620px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-        />
-        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-6 md:p-8">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-2">Aerial Master View</div>
-          <div className="font-display text-ivory text-xl md:text-2xl">Residential & Commercial Plots, 12 m Roads, Kiosks</div>
-        </figcaption>
-      </figure>
+      <Reveal>
+        <figure className="relative overflow-hidden luxe-card group mb-4">
+          <img
+            src={aerialMasterImg}
+            alt="Kadamba Kunjh aerial master view artistic impression"
+            loading="lazy"
+            className="w-full h-[420px] md:h-[620px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+          <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent p-6 md:p-8">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-2">Aerial Master View</div>
+            <div className="font-display text-ivory text-xl md:text-2xl">Residential & Commercial Plots, 12 m Roads, Kiosks</div>
+          </figcaption>
+        </figure>
+      </Reveal>
 
       {/* Two streetscape tiles */}
       <div className="grid md:grid-cols-2 gap-4 mb-4">
-        {tiles.map((t) => (
-          <figure key={t.caption} className="relative overflow-hidden luxe-card group">
-            <img
-              src={t.src}
-              alt={t.caption}
-              loading="lazy"
-              className="w-full h-[280px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/55 to-transparent p-5">
-              <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-1.5">{t.eyebrow}</div>
-              <div className="font-display text-ivory text-lg md:text-xl">{t.caption}</div>
-            </figcaption>
-          </figure>
+        {tiles.map((t, i) => (
+          <Reveal key={t.caption} delay={i + 1}>
+            <figure className="relative overflow-hidden luxe-card group">
+              <img
+                src={t.src}
+                alt={t.caption}
+                loading="lazy"
+                className="w-full h-[280px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/55 to-transparent p-5">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-1.5">{t.eyebrow}</div>
+                <div className="font-display text-ivory text-lg md:text-xl">{t.caption}</div>
+              </figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
 
       {/* Road section diagram — object-contain to preserve technical drawing */}
-      <figure className="luxe-card overflow-hidden bg-ivory">
-        <div className="grid md:grid-cols-[1fr_1.4fr]">
-          <div className="p-8 md:p-10 bg-gradient-emerald text-primary-foreground flex flex-col justify-center">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-3">Road Engineering</div>
-            <div className="font-display text-2xl md:text-3xl mb-4 leading-tight">12 m Wide Road Section</div>
-            <p className="text-ivory/80 text-sm leading-relaxed">
-              1.5 m sidewalk · 1 m bike lane · 3 m drive lane (each side), with integrated sewage and rain water drainage —
-              engineered for walkability, cycling, and orderly traffic flow.
-            </p>
+      <Reveal>
+        <figure className="luxe-card overflow-hidden bg-ivory">
+          <div className="grid md:grid-cols-[1fr_1.4fr]">
+            <div className="p-8 md:p-10 bg-gradient-emerald text-primary-foreground flex flex-col justify-center">
+              <div className="text-[10px] uppercase tracking-[0.3em] text-accent mb-3">Road Engineering</div>
+              <div className="font-display text-2xl md:text-3xl mb-4 leading-tight">12 m Wide Road Section</div>
+              <p className="text-ivory/80 text-sm leading-relaxed">
+                1.5 m sidewalk · 1 m bike lane · 3 m drive lane (each side), with integrated sewage and rain water drainage —
+                engineered for walkability, cycling, and orderly traffic flow.
+              </p>
+            </div>
+            <img
+              src={roadSectionImg}
+              alt="12 m wide road section diagram"
+              loading="lazy"
+              className="w-full h-full object-contain bg-ivory p-4"
+            />
           </div>
-          <img
-            src={roadSectionImg}
-            alt="12 m wide road section diagram"
-            loading="lazy"
-            className="w-full h-full object-contain bg-ivory p-4"
-          />
-        </div>
-      </figure>
+        </figure>
+      </Reveal>
     </Section>
   );
 };
