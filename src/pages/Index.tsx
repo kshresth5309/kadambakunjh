@@ -236,28 +236,32 @@ const WhyBuilders = () => {
     <Section id="opportunity" className="bg-primary text-primary-foreground relative overflow-hidden">
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl" />
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary-glow/30 blur-3xl" />
-      <div className="relative grid lg:grid-cols-[1fr_2fr] gap-16">
-        <div>
-          <div className="flex items-center gap-3 mb-5">
-            <span className="h-px w-12 bg-accent/80" />
-            <span className="text-xs uppercase tracking-[0.3em] text-accent">The Opportunity</span>
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl mb-6 leading-tight">
-            Why Builders Should Look at <em className="text-accent-soft">Kadamba Kunjh</em>
-          </h2>
-          <p className="text-ivory/70 leading-relaxed">
-            A boutique plotted estate meets institutional real estate opportunity — engineered for builder-floor economics.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
-          {points.map((p, i) => (
-            <div key={i} className="border-t border-ivory/20 pt-6">
-              <div className="font-display text-3xl text-accent mb-3">{String(i + 1).padStart(2, "0")}</div>
-              <p className="text-ivory/85 leading-relaxed">{p}</p>
+      <Reveal>
+        <div className="relative grid lg:grid-cols-[1fr_2fr] gap-16">
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-12 bg-accent/80" />
+              <span className="text-xs uppercase tracking-[0.3em] text-accent">The Opportunity</span>
             </div>
-          ))}
+            <h2 className="font-display text-4xl md:text-5xl mb-6 leading-tight">
+              Why Builders Should Look at <em className="text-accent-soft">Kadamba Kunjh</em>
+            </h2>
+            <p className="text-ivory/70 leading-relaxed">
+              A boutique plotted estate meets institutional real estate opportunity — engineered for builder-floor economics.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-10">
+            {points.map((p, i) => (
+              <Reveal key={i} delay={(i % 2) + 1}>
+                <div className="border-t border-ivory/20 pt-6">
+                  <div className="font-display text-3xl text-accent mb-3">{String(i + 1).padStart(2, "0")}</div>
+                  <p className="text-ivory/85 leading-relaxed">{p}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 };
