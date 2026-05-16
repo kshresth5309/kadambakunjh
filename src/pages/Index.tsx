@@ -158,30 +158,32 @@ const Location = () => {
 
 const MasterPlan = () => (
   <Section id="masterplan" className="bg-ivory-deep/40">
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <Eyebrow>Master Plan · Scale</Eyebrow>
-        <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
-          Designed for movement, visibility, livability, and <em className="text-accent">builder-floor viability</em>.
-        </h2>
-        <ul className="space-y-4 mb-8">
-          {[
-            "Approx. 24,143.46 sqm site area",
-            "45 m wide arterial road frontage",
-            "12 m internal roads with hierarchy",
-            "Residential plots, commercial plots & kiosks",
-          ].map((t) => (
-            <li key={t} className="flex gap-3 text-foreground/85">
-              <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" strokeWidth={1.5} />
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
+    <Reveal>
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <Eyebrow>Master Plan · Scale</Eyebrow>
+          <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
+            Designed for movement, visibility, livability, and <em className="text-accent">builder-floor viability</em>.
+          </h2>
+          <ul className="space-y-4 mb-8">
+            {[
+              "Approx. 24,143.46 sqm site area",
+              "45 m wide arterial road frontage",
+              "12 m internal roads with hierarchy",
+              "Residential plots, commercial plots & kiosks",
+            ].map((t) => (
+              <li key={t} className="flex gap-3 text-foreground/85">
+                <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" strokeWidth={1.5} />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="luxe-card overflow-hidden">
+          <img src={masterPlanImg} alt="Kadamba Kunjh master layout plan" className="w-full h-auto" loading="lazy" width={1408} height={1024} />
+        </div>
       </div>
-      <div className="luxe-card overflow-hidden">
-        <img src={masterPlanImg} alt="Kadamba Kunjh master layout plan" className="w-full h-auto" loading="lazy" width={1408} height={1024} />
-      </div>
-    </div>
+    </Reveal>
   </Section>
 );
 
