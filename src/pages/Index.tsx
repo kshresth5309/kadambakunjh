@@ -200,19 +200,23 @@ const Infrastructure = () => {
   ];
   return (
     <Section className="bg-background">
-      <div className="max-w-3xl mb-16">
-        <Eyebrow>Infrastructure & Lifestyle</Eyebrow>
-        <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
-          A community designed around <em className="text-accent">thoughtful infrastructure</em>.
-        </h2>
-      </div>
+      <Reveal>
+        <div className="max-w-3xl mb-16">
+          <Eyebrow>Infrastructure & Lifestyle</Eyebrow>
+          <h2 className="font-display text-4xl md:text-5xl text-primary leading-tight">
+            A community designed around <em className="text-accent">thoughtful infrastructure</em>.
+          </h2>
+        </div>
+      </Reveal>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-        {items.map((it) => (
-          <div key={it.title} className="bg-card p-8 hover:bg-ivory-deep/50 transition-colors duration-500 group">
-            <it.icon className="w-8 h-8 text-accent mb-6" strokeWidth={1.2} />
-            <div className="font-display text-xl text-primary leading-snug">{it.title}</div>
-            <div className="h-px w-6 bg-accent/50 mt-5 group-hover:w-12 transition-all duration-500" />
-          </div>
+        {items.map((it, i) => (
+          <Reveal key={it.title} delay={(i % 4) + 1}>
+            <div className="bg-card p-8 hover:bg-ivory-deep/50 transition-colors duration-500 group h-full">
+              <it.icon className="w-8 h-8 text-accent mb-6" strokeWidth={1.2} />
+              <div className="font-display text-xl text-primary leading-snug">{it.title}</div>
+              <div className="h-px w-6 bg-accent/50 mt-5 group-hover:w-12 transition-all duration-500" />
+            </div>
+          </Reveal>
         ))}
       </div>
     </Section>
