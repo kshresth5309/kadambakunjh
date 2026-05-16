@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
   Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store,
   Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
@@ -23,6 +24,16 @@ const CALL_PHONE = "9811794750";
 const CALL_PHONE_DISPLAY = "+91 98117 94750";
 const PHONE = "8010750750";
 const PHONE_DISPLAY = "+91 80 10 750 750";
+
+const Reveal = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
+  const { ref, visible } = useScrollReveal<HTMLDivElement>();
+  const delayClass = delay > 0 ? ` reveal-delay-${Math.min(delay, 4)}` : "";
+  return (
+    <div ref={ref} className={`reveal${visible ? " visible" : ""}${delayClass} ${className}`}>
+      {children}
+    </div>
+  );
+};
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   <div className="flex items-center gap-3 mb-5">
