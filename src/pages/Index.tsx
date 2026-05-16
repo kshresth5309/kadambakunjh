@@ -130,22 +130,26 @@ const Location = () => {
   ];
   return (
     <Section id="location" className="bg-background">
-      <div className="max-w-3xl mb-16">
-        <Eyebrow>Location Advantage</Eyebrow>
-        <h2 className="font-display text-4xl md:text-5xl text-primary mb-5">A Location Built for Fast Decision-Making</h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          Located in Koyal Enclave, Ghaziabad, within an established residential neighborhood with social
-          infrastructure already in place.
-        </p>
-      </div>
+      <Reveal>
+        <div className="max-w-3xl mb-16">
+          <Eyebrow>Location Advantage</Eyebrow>
+          <h2 className="font-display text-4xl md:text-5xl text-primary mb-5">A Location Built for Fast Decision-Making</h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Located in Koyal Enclave, Ghaziabad, within an established residential neighborhood with social
+            infrastructure already in place.
+          </p>
+        </div>
+      </Reveal>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((s) => (
-          <div key={s.place} className="luxe-card p-8 group">
-            <s.icon className="w-7 h-7 text-accent mb-6" strokeWidth={1.2} />
-            <div className="font-display text-4xl text-primary mb-2">{s.time}</div>
-            <div className="text-sm text-muted-foreground leading-snug">from {s.place}</div>
-            <div className="h-px w-8 bg-accent/60 mt-6 group-hover:w-16 transition-all duration-500" />
-          </div>
+        {stats.map((s, i) => (
+          <Reveal key={s.place} delay={i + 1}>
+            <div className="luxe-card p-8 group">
+              <s.icon className="w-7 h-7 text-accent mb-6" strokeWidth={1.2} />
+              <div className="font-display text-4xl text-primary mb-2">{s.time}</div>
+              <div className="text-sm text-muted-foreground leading-snug">from {s.place}</div>
+              <div className="h-px w-8 bg-accent/60 mt-6 group-hover:w-16 transition-all duration-500" />
+            </div>
+          </Reveal>
         ))}
       </div>
     </Section>
