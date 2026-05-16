@@ -374,99 +374,101 @@ const Contact = () => {
 
   return (
     <Section id="contact" className="bg-background">
-      <div className="grid lg:grid-cols-2 gap-16">
-        <div>
-          <Eyebrow>Contact</Eyebrow>
-          <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
-            Request Builder <em className="text-accent">Inventory Details</em>
-          </h2>
-          <p className="text-muted-foreground mb-10 leading-relaxed">
-            Share your enquiry and a project advisor will respond with the curated inventory note, layout, and commercial terms.
-          </p>
+      <Reveal>
+        <div className="grid lg:grid-cols-2 gap-16">
+          <div>
+            <Eyebrow>Contact</Eyebrow>
+            <h2 className="font-display text-4xl md:text-5xl text-primary mb-6 leading-tight">
+              Request Builder <em className="text-accent">Inventory Details</em>
+            </h2>
+            <p className="text-muted-foreground mb-10 leading-relaxed">
+              Share your enquiry and a project advisor will respond with the curated inventory note, layout, and commercial terms.
+            </p>
 
-          <div className="space-y-6 mb-10">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
-                <Building2 className="w-5 h-5 text-accent" strokeWidth={1.3} />
+            <div className="space-y-6 mb-10">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                  <Building2 className="w-5 h-5 text-accent" strokeWidth={1.3} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Mandate</div>
+                  <div className="font-display text-xl text-primary">Kumar Linkers Realty</div>
+                </div>
               </div>
-              <div>
-                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Mandate</div>
-                <div className="font-display text-xl text-primary">Kumar Linkers Realty</div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-accent" strokeWidth={1.3} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Project Desk</div>
+                  <a href={`tel:${CALL_PHONE}`} className="font-display text-xl text-primary hover:text-accent block">{CALL_PHONE_DISPLAY}</a>
+                  <a href={`tel:${PHONE}`} className="text-sm text-muted-foreground hover:text-accent block mt-1">{PHONE_DISPLAY}</a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-accent" strokeWidth={1.3} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Web</div>
+                  <a href="https://kumarlinkers.in" className="font-display text-xl text-primary hover:text-accent">kumarlinkers.in</a>
+                </div>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5 text-accent" strokeWidth={1.3} />
-              </div>
-              <div>
-                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Project Desk</div>
-                <a href={`tel:${CALL_PHONE}`} className="font-display text-xl text-primary hover:text-accent block">{CALL_PHONE_DISPLAY}</a>
-                <a href={`tel:${PHONE}`} className="text-sm text-muted-foreground hover:text-accent block mt-1">{PHONE_DISPLAY}</a>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-sm bg-primary/5 border border-accent/40 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5 text-accent" strokeWidth={1.3} />
-              </div>
-              <div>
-                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-1">Web</div>
-                <a href="https://kumarlinkers.in" className="font-display text-xl text-primary hover:text-accent">kumarlinkers.in</a>
-              </div>
-            </div>
+
+            <a href={`tel:${CALL_PHONE}`}>
+              <Button variant="luxe" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Project Team</Button>
+            </a>
           </div>
 
-          <a href={`tel:${CALL_PHONE}`}>
-            <Button variant="luxe" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Project Team</Button>
-          </a>
+          <form onSubmit={onSubmit} className="luxe-card p-8 md:p-10 bg-card space-y-5">
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <Label htmlFor="name" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Name</Label>
+                <Input id="name" name="name" required className="mt-2 border-border bg-background" />
+              </div>
+              <div>
+                <Label htmlFor="company" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Company</Label>
+                <Input id="company" name="company" className="mt-2 border-border bg-background" />
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <Label htmlFor="phone" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Phone</Label>
+                <Input id="phone" name="phone" type="tel" required className="mt-2 border-border bg-background" />
+              </div>
+              <div>
+                <Label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email</Label>
+                <Input id="email" name="email" type="email" required className="mt-2 border-border bg-background" />
+              </div>
+            </div>
+            <div>
+              <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Buyer Type</Label>
+              <Select value={type} onValueChange={setType}>
+                <SelectTrigger className="mt-2 bg-background"><SelectValue placeholder="Select category" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="builder">Builder</SelectItem>
+                  <SelectItem value="developer">Developer</SelectItem>
+                  <SelectItem value="broker">Broker</SelectItem>
+                  <SelectItem value="investor">Investor</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Message</Label>
+              <Textarea id="message" name="message" rows={4} className="mt-2 border-border bg-background" />
+            </div>
+            <Button type="submit" variant="luxe" size="lg" className="w-full" disabled={submitting}>
+              {submitting ? "Submitting…" : "Submit Enquiry"}
+            </Button>
+            <p className="text-[11px] text-muted-foreground leading-relaxed pt-2">
+              Availability, pricing, approvals, payment plans, and final terms are subject to confirmation. Images shown
+              are artistic impressions / project presentation visuals.
+            </p>
+          </form>
         </div>
-
-        <form onSubmit={onSubmit} className="luxe-card p-8 md:p-10 bg-card space-y-5">
-          <div className="grid sm:grid-cols-2 gap-5">
-            <div>
-              <Label htmlFor="name" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Name</Label>
-              <Input id="name" name="name" required className="mt-2 border-border bg-background" />
-            </div>
-            <div>
-              <Label htmlFor="company" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Company</Label>
-              <Input id="company" name="company" className="mt-2 border-border bg-background" />
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5">
-            <div>
-              <Label htmlFor="phone" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Phone</Label>
-              <Input id="phone" name="phone" type="tel" required className="mt-2 border-border bg-background" />
-            </div>
-            <div>
-              <Label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email</Label>
-              <Input id="email" name="email" type="email" required className="mt-2 border-border bg-background" />
-            </div>
-          </div>
-          <div>
-            <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Buyer Type</Label>
-            <Select value={type} onValueChange={setType}>
-              <SelectTrigger className="mt-2 bg-background"><SelectValue placeholder="Select category" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="builder">Builder</SelectItem>
-                <SelectItem value="developer">Developer</SelectItem>
-                <SelectItem value="broker">Broker</SelectItem>
-                <SelectItem value="investor">Investor</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
-            <Label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Message</Label>
-            <Textarea id="message" name="message" rows={4} className="mt-2 border-border bg-background" />
-          </div>
-          <Button type="submit" variant="luxe" size="lg" className="w-full" disabled={submitting}>
-            {submitting ? "Submitting…" : "Submit Enquiry"}
-          </Button>
-          <p className="text-[11px] text-muted-foreground leading-relaxed pt-2">
-            Availability, pricing, approvals, payment plans, and final terms are subject to confirmation. Images shown
-            are artistic impressions / project presentation visuals.
-          </p>
-        </form>
-      </div>
+      </Reveal>
     </Section>
   );
 };
