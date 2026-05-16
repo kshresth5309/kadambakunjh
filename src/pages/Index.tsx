@@ -94,28 +94,30 @@ const Hero = () => (
 
 const EligibilityCallout = () => (
   <Section className="bg-ivory">
-    <div className="luxe-card p-10 md:p-16 bg-gradient-emerald text-primary-foreground relative overflow-hidden">
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
-      <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
-        <div>
-          <div className="flex items-center gap-3 mb-5">
-            <span className="h-px w-12 bg-accent/80" />
-            <span className="text-xs uppercase tracking-[0.3em] text-accent">Eligibility</span>
+    <Reveal>
+      <div className="luxe-card p-10 md:p-16 bg-gradient-emerald text-primary-foreground relative overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
+        <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-12 bg-accent/80" />
+              <span className="text-xs uppercase tracking-[0.3em] text-accent">Eligibility</span>
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl mb-6 leading-tight">
+              For B+S+4 Multi-Unit <span className="italic text-accent-soft">Floor Builders</span> Only
+            </h2>
+            <p className="text-ivory/85 max-w-2xl text-base md:text-lg leading-relaxed">
+              Kadamba Kunjh is positioned for experienced builders and developers looking to create premium low-rise
+              builder-floor inventory in a high-connectivity Ghaziabad micro-market. This is not an individual plot
+              retail offering.
+            </p>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl mb-6 leading-tight">
-            For B+S+4 Multi-Unit <span className="italic text-accent-soft">Floor Builders</span> Only
-          </h2>
-          <p className="text-ivory/85 max-w-2xl text-base md:text-lg leading-relaxed">
-            Kadamba Kunjh is positioned for experienced builders and developers looking to create premium low-rise
-            builder-floor inventory in a high-connectivity Ghaziabad micro-market. This is not an individual plot
-            retail offering.
-          </p>
+          <a href="#contact" className="shrink-0">
+            <Button variant="gold" size="lg">Check Builder Inventory</Button>
+          </a>
         </div>
-        <a href="#contact" className="shrink-0">
-          <Button variant="gold" size="lg">Check Builder Inventory</Button>
-        </a>
       </div>
-    </div>
+    </Reveal>
   </Section>
 );
 
