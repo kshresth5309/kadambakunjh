@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
-  Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store,
+  Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store, Train,
   Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero-aerial.jpg";
@@ -177,6 +177,7 @@ const Location = () => {
     { icon: ShoppingBag, time: "2 min", place: "Oxy Rich Mall" },
     { icon: Stethoscope, time: "4 min", place: "Yashoda Hospital" },
     { icon: Store, time: "7 min", place: "DMart" },
+    { icon: Train, time: "15 min", place: "Proposed Metro" },
   ];
   return (
     <Section id="location" className="bg-background">
@@ -190,7 +191,7 @@ const Location = () => {
           </p>
         </div>
       </Reveal>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {stats.map((s, i) => (
           <Reveal key={s.place} delay={i + 1}>
             <div className="luxe-card p-8 group">
