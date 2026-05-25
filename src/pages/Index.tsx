@@ -539,12 +539,6 @@ const Footer = () => (
       </Reveal>
       <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-6 justify-between items-center text-xs text-ivory/60">
         <div>© {new Date().getFullYear()} Kumar Linkers Realty · Exclusive Sales Mandate</div>
-        <div className="flex items-center gap-3">
-          <span className="uppercase tracking-[0.25em] text-[10px]">Developed by</span>
-          <div className="bg-ivory rounded-sm px-3 py-2">
-            <img src={developerLogo} alt="Aditya" className="h-7 w-auto object-contain" />
-          </div>
-        </div>
         <div>Koyal Enclave, Ghaziabad, Uttar Pradesh</div>
       </div>
     </div>
@@ -567,7 +561,6 @@ const Index = () => {
     <main className="bg-background min-h-screen">
       <Nav />
       <Hero />
-      <DeveloperStrip />
       <EligibilityCallout />
       <Location />
       <MasterPlan />
