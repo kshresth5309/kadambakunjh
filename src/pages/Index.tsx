@@ -19,6 +19,7 @@ import commercialImg from "@/assets/gallery-commercial.png";
 import roadSectionImg from "@/assets/road-section.png";
 import masterPlanImg from "@/assets/master-plan.jpg";
 import logo from "@/assets/logo.png";
+import developerLogo from "@/assets/developer-aditya.png";
 
 const CALL_PHONE = "9811794750";
 const CALL_PHONE_DISPLAY = "+91 98117 94750";
@@ -88,6 +89,32 @@ const Hero = () => (
           ))}
         </div>
       </div>
+    </div>
+  </section>
+);
+
+const DeveloperStrip = () => (
+  <section className="bg-ivory border-y border-border/60">
+    <div className="container-luxe py-8 md:py-10">
+      <Reveal>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 text-center md:text-left">
+          <div className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+            Developed By
+          </div>
+          <div className="hidden md:block h-10 w-px bg-border" />
+          <img
+            src={developerLogo}
+            alt="Aditya — Building Trust Since 1979"
+            className="h-16 md:h-20 w-auto object-contain"
+            loading="lazy"
+          />
+          <div className="hidden md:block h-10 w-px bg-border" />
+          <p className="max-w-md text-sm text-foreground/70 leading-relaxed">
+            A development by <span className="font-display text-primary">Aditya</span> — building trust since
+            <span className="text-accent"> 1979</span>. Four decades of delivered real estate craftsmanship.
+          </p>
+        </div>
+      </Reveal>
     </div>
   </section>
 );
@@ -494,8 +521,14 @@ const Footer = () => (
           </nav>
         </div>
       </Reveal>
-      <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-4 justify-between text-xs text-ivory/60">
+      <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-6 justify-between items-center text-xs text-ivory/60">
         <div>© {new Date().getFullYear()} Kumar Linkers Realty · Exclusive Sales Mandate</div>
+        <div className="flex items-center gap-3">
+          <span className="uppercase tracking-[0.25em] text-[10px]">Developed by</span>
+          <div className="bg-ivory rounded-sm px-3 py-2">
+            <img src={developerLogo} alt="Aditya" className="h-7 w-auto object-contain" />
+          </div>
+        </div>
         <div>Koyal Enclave, Ghaziabad, Uttar Pradesh</div>
       </div>
     </div>
@@ -518,6 +551,7 @@ const Index = () => {
     <main className="bg-background min-h-screen">
       <Nav />
       <Hero />
+      <DeveloperStrip />
       <EligibilityCallout />
       <Location />
       <MasterPlan />
