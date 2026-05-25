@@ -70,10 +70,18 @@ const Hero = () => (
             A Premium Plotted Development Opportunity in Koyal Enclave, Ghaziabad
           </span>
         </h1>
-        <p className="text-ivory/85 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed hero-rise hero-delay-4">
+        <p className="text-ivory/85 text-base md:text-lg max-w-2xl mx-auto mb-6 leading-relaxed hero-rise hero-delay-4">
           Exclusively for <span className="text-accent">Basement + Stilt + 4</span> multi-unit floor builders. A rare,
           organized plotted estate in an established residential catchment.
         </p>
+        <div className="flex flex-wrap justify-center gap-3 mb-10 hero-rise hero-delay-4">
+          <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-accent/90 border border-accent/30 px-3 py-1.5 rounded-full">
+            <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} /> RERA Approved
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-accent/90 border border-accent/30 px-3 py-1.5 rounded-full">
+            <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} /> GDA Approved
+          </span>
+        </div>
         <div className="flex flex-wrap justify-center gap-4 mb-14 hero-rise hero-delay-5">
           <a href="#contact"><Button variant="gold" size="lg">Request Project Details <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
           <a href={`tel:${CALL_PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
