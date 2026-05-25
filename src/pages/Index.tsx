@@ -86,7 +86,7 @@ const Hero = () => (
             { v: "12 m", l: "Internal Roads" },
             { v: "Prime", l: "Residential Catchment" },
           ].map((s) => (
-            <div key={s.l} className="bg-primary/40 backdrop-blur-md p-5 md:p-6">
+            <div key={s.l} className="bg-primary/40 backdrop-blur-md p-5 md:p-6 text-center">
               <div className="font-display text-2xl md:text-3xl text-accent">{s.v}</div>
               <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-ivory/70 mt-1">{s.l}</div>
             </div>
@@ -103,7 +103,7 @@ const Hero = () => (
             loading="lazy"
           />
           <div className="hidden md:block h-8 w-px bg-ivory/20" />
-          <p className="text-sm text-ivory/80 leading-relaxed text-center md:text-left">
+          <p className="text-sm text-ivory/80 leading-relaxed text-center">
             A development by <span className="font-display text-ivory">Aditya</span> — building trust since
             <span className="text-accent"> 1979</span>.
           </p>
