@@ -598,7 +598,7 @@ const Index = () => {
       <Gallery />
       <Contact />
       <Footer />
-      <FloatingCTA />
+      <FloatingActions />
     </main>
   );
 };
