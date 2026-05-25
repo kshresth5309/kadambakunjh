@@ -177,6 +177,7 @@ const Location = () => {
     { icon: ShoppingBag, time: "2 min", place: "Oxy Rich Mall" },
     { icon: Stethoscope, time: "4 min", place: "Yashoda Hospital" },
     { icon: Store, time: "7 min", place: "DMart" },
+    { icon: Train, time: "15 min", place: "Proposed Metro" },
   ];
   return (
     <Section id="location" className="bg-background">
