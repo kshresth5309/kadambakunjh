@@ -572,7 +572,7 @@ const FloatingActions = () => (
       <span className="font-display text-sm tracking-wide">Call Now</span>
     </a>
     <a
-      href="https://wa.me/918010750750"
+      href="https://api.whatsapp.com/send/?phone=918010750750&text=Hello%2C+I+would+like+to+schedule+a+consultation+for+Kadamba+Kunjh.&type=phone_number&app_absent=0"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-2 px-5 h-14 rounded-full text-white shadow-luxe hover:scale-105 transition-transform"
