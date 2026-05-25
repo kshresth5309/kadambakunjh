@@ -88,7 +88,8 @@ const Hero = () => (
             </div>
           ))}
         </div>
-      </<div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 border border-ivory/15 bg-ivory/5 backdrop-blur-sm p-5 md:p-6 rounded-sm">
+
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 border border-ivory/15 bg-ivory/5 backdrop-blur-sm p-5 md:p-6 rounded-sm">
           <div className="text-[10px] uppercase tracking-[0.35em] text-ivory/70">Developed By</div>
           <div className="hidden md:block h-8 w-px bg-ivory/20" />
           <img
@@ -103,6 +104,7 @@ const Hero = () => (
             <span className="text-accent"> 1979</span>.
           </p>
         </div>
+      </div>
     </div>
   </section>
 );
