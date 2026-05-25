@@ -58,19 +58,23 @@ const Hero = () => (
     <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
 
     <div className="container-luxe relative pb-20 md:pb-28 pt-40">
-      <div className="max-w-4xl animate-fade-up">
-        <Eyebrow>Exclusive Sales Mandate · Kumar Linkers Realty</Eyebrow>
+      <div className="max-w-4xl mx-auto text-center animate-fade-up">
+        <div className="flex items-center justify-center gap-3 mb-5">
+          <span className="hairline" />
+          <span className="eyebrow">Exclusive Sales Mandate · Kumar Linkers Realty</span>
+          <span className="hairline" />
+        </div>
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-ivory leading-[1.05] mb-6">
           Kadamba Kunjh
           <span className="block text-2xl md:text-3xl lg:text-4xl text-accent-soft mt-4 font-light italic">
             A Premium Plotted Development Opportunity in Koyal Enclave, Ghaziabad
           </span>
         </h1>
-        <p className="text-ivory/85 text-base md:text-lg max-w-2xl mb-10 leading-relaxed">
+        <p className="text-ivory/85 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
           Exclusively for <span className="text-accent">Basement + Stilt + 4</span> multi-unit floor builders. A rare,
           organized plotted estate in an established residential catchment.
         </p>
-        <div className="flex flex-wrap gap-4 mb-14">
+        <div className="flex flex-wrap justify-center gap-4 mb-14">
           <a href="#contact"><Button variant="gold" size="lg">Request Project Details <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
           <a href={`tel:${CALL_PHONE}`}><Button variant="outlineIvory" size="lg"><Phone className="w-4 h-4 mr-2" /> Call Now</Button></a>
         </div>
@@ -82,7 +86,7 @@ const Hero = () => (
             { v: "12 m", l: "Internal Roads" },
             { v: "Prime", l: "Residential Catchment" },
           ].map((s) => (
-            <div key={s.l} className="bg-primary/40 backdrop-blur-md p-5 md:p-6">
+            <div key={s.l} className="bg-primary/40 backdrop-blur-md p-5 md:p-6 text-center">
               <div className="font-display text-2xl md:text-3xl text-accent">{s.v}</div>
               <div className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-ivory/70 mt-1">{s.l}</div>
             </div>
@@ -99,7 +103,7 @@ const Hero = () => (
             loading="lazy"
           />
           <div className="hidden md:block h-8 w-px bg-ivory/20" />
-          <p className="text-sm text-ivory/80 leading-relaxed text-center md:text-left">
+          <p className="text-sm text-ivory/80 leading-relaxed text-center">
             A development by <span className="font-display text-ivory">Aditya</span> — building trust since
             <span className="text-accent"> 1979</span>.
           </p>
