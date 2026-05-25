@@ -561,15 +561,28 @@ const Footer = () => (
   </footer>
 );
 
-const FloatingCTA = () => (
-  <a
-    href={`tel:${CALL_PHONE}`}
-    className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 px-5 h-14 rounded-full bg-gradient-emerald text-primary-foreground shadow-luxe hover:scale-105 transition-transform"
-    aria-label="Call Now"
-  >
-    <Phone className="w-5 h-5" />
-    <span className="font-display text-sm tracking-wide">Call Now</span>
-  </a>
+const FloatingActions = () => (
+  <div className="fixed bottom-6 right-6 z-40 flex flex-col-reverse items-end gap-3">
+    <a
+      href={`tel:${CALL_PHONE}`}
+      className="inline-flex items-center gap-2 px-5 h-14 rounded-full bg-gradient-emerald text-primary-foreground shadow-luxe hover:scale-105 transition-transform"
+      aria-label="Call Now"
+    >
+      <Phone className="w-5 h-5" />
+      <span className="font-display text-sm tracking-wide">Call Now</span>
+    </a>
+    <a
+      href="https://wa.me/918010750750"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-5 h-14 rounded-full text-white shadow-luxe hover:scale-105 transition-transform"
+      style={{ backgroundColor: "hsl(var(--whatsapp))" }}
+      aria-label="Chat on WhatsApp"
+    >
+      <MessageCircle className="w-5 h-5" />
+      <span className="font-display text-sm tracking-wide">WhatsApp</span>
+    </a>
+  </div>
 );
 
 const Index = () => {
