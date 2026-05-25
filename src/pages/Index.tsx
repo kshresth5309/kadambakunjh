@@ -88,6 +88,22 @@ const Hero = () => (
             </div>
           ))}
         </div>
+
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 border border-ivory/15 bg-ivory/5 backdrop-blur-sm p-5 md:p-6 rounded-sm">
+          <div className="text-[10px] uppercase tracking-[0.35em] text-ivory/70">Developed By</div>
+          <div className="hidden md:block h-8 w-px bg-ivory/20" />
+          <img
+            src={developerLogo}
+            alt="Aditya — Building Trust Since 1979"
+            className="h-12 md:h-14 w-auto object-contain"
+            loading="lazy"
+          />
+          <div className="hidden md:block h-8 w-px bg-ivory/20" />
+          <p className="text-sm text-ivory/80 leading-relaxed text-center md:text-left">
+            A development by <span className="font-display text-ivory">Aditya</span> — building trust since
+            <span className="text-accent"> 1979</span>.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -523,12 +539,6 @@ const Footer = () => (
       </Reveal>
       <div className="border-t border-ivory/15 pt-8 flex flex-col md:flex-row gap-6 justify-between items-center text-xs text-ivory/60">
         <div>© {new Date().getFullYear()} Kumar Linkers Realty · Exclusive Sales Mandate</div>
-        <div className="flex items-center gap-3">
-          <span className="uppercase tracking-[0.25em] text-[10px]">Developed by</span>
-          <div className="bg-ivory rounded-sm px-3 py-2">
-            <img src={developerLogo} alt="Aditya" className="h-7 w-auto object-contain" />
-          </div>
-        </div>
         <div>Koyal Enclave, Ghaziabad, Uttar Pradesh</div>
       </div>
     </div>
@@ -551,7 +561,6 @@ const Index = () => {
     <main className="bg-background min-h-screen">
       <Nav />
       <Hero />
-      <DeveloperStrip />
       <EligibilityCallout />
       <Location />
       <MasterPlan />
