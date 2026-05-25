@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
-  Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store,
+  Phone, MessageCircle, MapPin, Plane, ShoppingBag, Stethoscope, Store, Train,
   Trees, Footprints, Bike, Lightbulb, DoorOpen, Building2, Droplets, Route, ArrowRight, CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero-aerial.jpg";
