@@ -88,7 +88,21 @@ const Hero = () => (
             </div>
           ))}
         </div>
-      </div>
+      </<div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 border border-ivory/15 bg-ivory/5 backdrop-blur-sm p-5 md:p-6 rounded-sm">
+          <div className="text-[10px] uppercase tracking-[0.35em] text-ivory/70">Developed By</div>
+          <div className="hidden md:block h-8 w-px bg-ivory/20" />
+          <img
+            src={developerLogo}
+            alt="Aditya — Building Trust Since 1979"
+            className="h-12 md:h-14 w-auto object-contain"
+            loading="lazy"
+          />
+          <div className="hidden md:block h-8 w-px bg-ivory/20" />
+          <p className="text-sm text-ivory/80 leading-relaxed text-center md:text-left">
+            A development by <span className="font-display text-ivory">Aditya</span> — building trust since
+            <span className="text-accent"> 1979</span>.
+          </p>
+        </div>
     </div>
   </section>
 );
