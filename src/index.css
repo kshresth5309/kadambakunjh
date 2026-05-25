@@ -72,6 +72,9 @@
 }
 
 @layer components {
+  .container-luxe {
+    @apply max-w-7xl mx-auto px-6 md:px-10;
+  }
   .eyebrow {
     @apply text-xs uppercase tracking-[0.3em] text-accent font-medium;
   }
